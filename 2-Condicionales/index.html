@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación de Notas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #resultado {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .excelente { color: white; background-color: green; }
+        .bien { color: black; background-color: yellow; }
+        .suficiente { color: black; background-color: orange; }
+        .reprobado { color: white; background-color: red; }
+    </style>
+</head>
+<body>
+
+    <h1>Calculadora de Promedio</h1>
+    <p>Ingresa tres notas para calcular tu promedio</p>
+
+    <script>
+        // Solicitar las notas al usuario
+        let nota1 = parseFloat(prompt("Ingresa la nota 1"));
+        let nota2 = parseFloat(prompt("Ingresa la nota 2"));
+        let nota3 = parseFloat(prompt("Ingresa la nota 3"));
+
+        // Validar que las notas sean números
+        if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+            document.write("<p style='color: red;'>Por favor, ingresa valores numéricos válidos.</p>");
+        } else {
+            let promedio = (nota1 + nota2 + nota3) / 3;
+            let mensaje = `Tu promedio es: ${promedio.toFixed(2)}. `;
+            let resultadoClase = "";
+
+            // Determinar el resultado y el color
+            if (promedio >= 90) {
+                mensaje += "¡Excelente!";
+                resultadoClase = "excelente";
+            } else if (promedio >= 75) {
+                mensaje += "¡Bien!";
+                resultadoClase = "bien";
+            } else if (promedio >= 60) {
+                mensaje += "Suficiente.";
+                resultadoClase = "suficiente";
+            } else {
+                mensaje += "No apruebas.";
+                resultadoClase = "reprobado";
+            }
+
+            // Mostrar el resultado con colores
+            document.write(`<p id="resultado" class="${resultadoClase}">${mensaje}</p>`);
+        }
+    </script>
+
+</body>
+</html>
